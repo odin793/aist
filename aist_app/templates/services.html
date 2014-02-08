@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+{% load aist_app_tags %}
+
+{% block title %} Услуги {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row page_row">
+      <div class="col-md-9" style="padding-right: 40px;">
+
+        <h2 class="text-center" style="margin: 0 0 30px 0;"><span class="glyphicon glyphicon-briefcase" style="margin-right: 25px;"></span>Услуги</h2>
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+        {% for service in services %}
+          <div class="alert alert-info text-center blue_block">
+            <h4 style="margin: 8px 0">{{ service.name }}</h4>
+          </div>
+
+          <div class="text_block">
+            {{ service.description|safe }}
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% news_block %}
+    </div>
+  </div>
+{% endblock %}

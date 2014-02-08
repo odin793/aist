@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+{% load aist_app_tags %}
+
+{% block title %} АИСТ {% endblock %}
+
+{% block content %}
+    
+  <div class="container">
+    <div class="row page_row">
+      <div class="col-md-9" style="padding-right: 40px;">
+
+        <h2 class="text-center" style="margin: 0 0 30px 0;"><span class="glyphicon glyphicon-bullhorn" style="margin-right: 25px;"></span>Новости</h2>
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+
+      <h3 style="margin: 0 0 20px 0;">{{ new.title }}</h3>
+      <hr>
+      <div class="row">
+        <div class="clearfix">&nbsp;</div>
+      </div>
+
+      <p> {{ new.full_text|safe }} </p>
+
+
+      {% if pictures_list %}
+      <div class="row">
+        <div class="clearfix">&nbsp;</div>
+        <div class="clearfix">&nbsp;</div>
+      </div>
+
+        <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            {% for p in pictures_list %}
+              {% if forloop.first %}
+                <li data-target="#newsCarousel" data-slide-to="forloop.counter" class="active"></li>
+              {% else %}
+                <li data-target="#newsCarousel" data-slide-to="forloop.counter"></li>
+              {% endif %}
+            {% endfor %}
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            {% for p in pictures_list %}
+              {% if forloop.first %}<div class="active item"> {% else %} <div class="item"> {% endif %}
+                <img src="{{ p.url }}" alt="{{ p.name }}">
+                <div class="carousel-caption">
+                  <h4>{{ p.name }}</h4>
+                  {% comment %}}<p>{{ p.descr }}</p>{% endcomment %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#newsCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="carousel-control right" href="#newsCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+
+      <div class="row">
+        <div class="clearfix">&nbsp;</div>
+      </div>
+      {% endif %}
+
+      <h4 style="margin-top: 25px;"><span class="label lable-large" style="background: #222222; border-color: #080808;">{{ new.date_added }}</span></h4>    
+    </div>
+
+    {% news_block %}
+  </div>
+
+{% endblock %}

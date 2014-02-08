@@ -1,0 +1,114 @@
+.hello_text {
+	margin-top: 50px;
+	background: url('cloth_alike.png');
+}
+
+.hero-feature {
+	/*margin-bottom: 30px;*//* spaces out the feature boxes once they start to stack responsively */
+}
+
+footer {
+	margin: 50px 0;
+}
+
+.page_row {
+	margin: 50px auto 0 auto;
+}
+
+.nav li {
+	margin: 0 10px;
+}
+
+.text_block {
+	margin-left: 10px;
+}
+
+.media_block {
+	display: inline-block;
+	width: 350px;
+	font-weight: bold;
+	margin: 10px;
+}
+
+.active_menu_item {
+	background: #000;
+	color: #fff;
+}
+
+.news_block {
+	background: url('cloth_alike.png');
+}
+
+.my_thumbnail {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    padding: 4px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.my_thumbnail > img, .thumbnail a > img {
+    display: block;
+    /*height: auto;*/
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+.my_thumbnail .caption {
+    color: #333333;
+    padding: 9px;
+    min-height: 78px;
+}
+
+.news_lent .news_lent_new {
+    margin: 15px 0;
+}
+
+.news_lent .news_lent_new p {
+    font-size: 13px;
+    /*text-align: justify;*/
+}
+
+.news_lent .news_lent_new span {
+    font-size: 17px;
+    /*text-align: justify;*/
+}
+
+.news_lent.not_last {
+    border-bottom: 1px dashed black;
+}
+
+div #newsCarousel {
+    width: 620px;
+    height: 420px;
+    margin: 0 auto;
+}
+
+.btn.disabled {
+    opacity: 1;
+}
+
+.gap_link {
+    text-decoration: none;
+    color: #333333;
+}
+
+.gap_link:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+.par_name {
+    background: url("cloth_alike.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 50px;
+}
+
+.blue_block {
+    padding: 6px 14px;
+    margin-bottom: 20px;
+    border-raduis: 0px;
+}

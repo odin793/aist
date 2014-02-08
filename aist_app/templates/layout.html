@@ -1,0 +1,104 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <!-- Custom CSS for the 'Heroic Features' Template -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    {% block extrahead %} {% endblock %}
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand menu-main" href="/">АИСТ</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+          {% comment %}<ul class=" nav nav-justified">{% endcomment %}
+            <li>
+              <a href="{% url 'about' %}"  class="menu-0">
+                <span class="glyphicon glyphicon-info-sign" style="margin-right: 15px;"></span>
+                О компании
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'services' %}" class="menu-1">
+                <span class="glyphicon glyphicon-briefcase" style="margin-right: 15px;"></span>
+                Услуги
+              </a>
+            </li>
+
+            <li>
+              <a href="{% url 'news' %}" class="menu-2">
+                <span class="glyphicon glyphicon-bullhorn" style="margin-right: 15px;"></span>
+                Новости
+            </a>
+            </li> 
+            
+            <li>
+              <a href="{% url 'contacts' %}" class="menu-3">
+                <span class="glyphicon glyphicon-phone-alt" style="margin-right: 15px;"></span>
+                Контакты
+              </a>
+            </li>
+          </ul>
+      
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /navbar -->
+
+    <div class="layout" style="margin-bottom: 50px;">
+      <div class="content">
+        {% block content %} {% endblock %}
+      </div>
+      {% comment %}
+      <hr>
+      <div class="container">
+        <footer>
+          <div class="row">
+            <div class="col-lg-12">
+              <p>Copyright &copy; Company 2013</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+      {% endcomment %}
+    </div>
+
+    <script src="{% static 'js/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script>
+      var arr = ['about', 'services', 'news', 'contacts'];
+      var url = window.location.toString();
+      $.each(arr, function(ind, el) {
+        if (url.match(el) !== null) {
+          $('a.menu-' + ind).css({'color': '#fff', 'background': '#000'})
+        }
+      });
+      if (window.location.pathname == '/') {
+        $('a.menu-main').css({'color': '#fff', 'background': '#000'})
+      };
+    </script>
+
+    {% block added_scripts %} {% endblock %}
+  </body>
+</html>
+

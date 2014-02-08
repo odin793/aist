@@ -1,0 +1,14 @@
+<div class="col-md-3">
+  <div class="well news_block">
+    {% for new in last_news %}
+      <div class="news_lent {% if not forloop.last %} not_last {% endif %}">
+        <div class="news_lent_new">
+          <a href="{% url 'exact_new' new.id %}"><span>{{ new.title }}</span></a>
+          <p>{{ new.short_text|safe }}</p>
+        </div>
+      </div>
+    {% empty %}
+      <h4> Новостей пока нет </h4>
+    {% endfor %}
+  </div>
+</div>

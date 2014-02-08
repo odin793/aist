@@ -1,0 +1,167 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+{% load aist_app_tags %}
+
+{% block title %} О компании {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row page_row">
+      <div class="col-md-9" style="padding-right: 40px;">
+
+        <h2 class="text-center" style="margin: 0 0 30px 0;"><span class="glyphicon glyphicon-info-sign" style="margin-right: 25px;"></span>О компании</h2>
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+        <div class="text_block">
+          {{ about|safe }}
+        </div>
+
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+        {% comment %}
+        <h3 style="margin: 0 0 20px 0;"></span>
+          Виды деятельности
+        </h3>
+        {% endcomment %}
+
+        <div class="alert alert-info text-center blue_block">
+          <h4 style="margin: 8px 0">Виды деятельности</h4>
+        </div>
+
+
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+        <div class="text_block">
+          {{ activity|safe }}
+        </div>
+
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+        {% if certificates %}
+          {% comment %}
+          <h3 style="margin: 0 0 20px 0;">
+            Сертификаты
+          </h3>
+          {% endcomment %}
+          <div class="alert alert-info text-center blue_block">
+            <h4 style="margin: 8px 0">Сертификаты</h4>
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+          </div>
+
+          <div style="text-align: center; width: 100%;">
+            {% for certificate in certificates %}
+              <div class="media_block">
+                <img src="{{ certificate.thumbnail_url }}" width="350px" hight="290px">
+                <div class="caption">
+                  <h4>
+                    {{ certificate.name }}
+                    <a href="{{ certificate.url }}">
+                      <span class="glyphicon glyphicon-search" style="margin-left: 5px;"></span>
+                    </a>
+                    </h4>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+            <div class="clearfix">&nbsp;</div>
+          </div>
+        {% endif %}
+
+        {% if documents %}
+          {% comment %}
+          <h3 style="margin: 0 0 20px 0;">
+            Нормативные документы
+          </h3>
+          {% endcomment %}
+          <div class="alert alert-info text-center blue_block">
+            <h4 style="margin: 8px 0">Нормативные документы</h4>
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+          </div>
+
+          <div class="text_block">
+            <table class="table">
+              {% for document in documents %}
+                <tr class="{% cycle '' 'active' %}">
+                  <td><h4>{{ forloop.counter }}</h4></td>
+                  <td>
+                    <a href="{{ document.url }}"><h4>{{ document.name }}</h4></a>
+                  </td>   
+                </tr>          
+              {% endfor %}
+            <tr><td></td><td></td></tr>
+            </table>
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+          </div>
+        {% endif %}
+
+
+        <div class="alert alert-info text-center blue_block">
+          <h4 style="margin: 8px 0">Производители оборудования</h4>
+        </div>
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+
+          <div class="text_block">
+            <table class="table">
+              {% for manufacturer in manufacturers %}
+                <tr class="{% cycle '' 'active' %}">
+                  <td><h4>{{ forloop.counter }}</h4></td>
+                  <td>
+                    <a href="{{ manufacturer.url }}"><h4>{{ manufacturer.name }}</h4></a>
+                  </td>   
+                </tr>          
+              {% endfor %}
+            <tr><td><td></tr>
+            </table>
+          </div>
+
+          <div class="row">
+            <div class="clearfix">&nbsp;</div>
+          </div>
+
+
+        {% comment %}
+        <div style="text-align: center; width: 100%;">
+          {% for manufacturer in manufacturers %}
+            <div class="alert alert-info media_block">
+              <a href="{{ manufacturer.url }}" >{{ manufacturer.name }}</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="row">
+          <div class="clearfix">&nbsp;</div>
+          <div class="clearfix">&nbsp;</div>
+        </div>
+        {% endcomment %}
+
+      </div>
+
+      {% news_block %}
+    </div>
+  </div>
+{% endblock %}
