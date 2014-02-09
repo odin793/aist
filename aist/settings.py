@@ -93,6 +93,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+STATIC_ROOT = rel('static_root')
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tiny_mce/tiny_mce.js')
 TINYMCE_JS_ROOT =  os.path.join(rel('static'), 'tiny_mce') # change to static_root when deploying
