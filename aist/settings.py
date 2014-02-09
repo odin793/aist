@@ -113,3 +113,8 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = False
 TINYMCE_COMPRESSOR = False
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
