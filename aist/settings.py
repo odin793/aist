@@ -27,7 +27,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aist-sm.ru', 'www.aist-sm.ru']
 
 
 # Application definition

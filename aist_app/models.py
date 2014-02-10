@@ -87,6 +87,7 @@ class Picture(models.Model):
     url = models.URLField(u'ссылка')
 
     class Meta:
+        ordering = ['position',]
         verbose_name = u'Фото'
         verbose_name_plural = u'фото'
     
