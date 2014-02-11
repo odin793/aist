@@ -42,7 +42,7 @@ def organize_in_lists(obj_list, l):    # return list of lists of l objects
 def index_page(request):
     company_text = CompanyText.objects.all()[0]
     header, hello_text = (company_text.header, company_text.hello_text)
-    index_pictures = organize_in_lists(IndexPicture.objects.all(), 4)
+    index_pictures = organize_in_lists(IndexPicture.objects.all(), 3)
     return {
     	'header': header,
     	'hello_text': hello_text,

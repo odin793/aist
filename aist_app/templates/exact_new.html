@@ -46,7 +46,7 @@
           <div class="carousel-inner">
             {% for p in pictures_list %}
               {% if forloop.first %}<div class="active item"> {% else %} <div class="item"> {% endif %}
-                <img src="{{ p.url }}" alt="{{ p.name }}">
+                <img width="630px" height="420px" src="{{ p.url }}" alt="{{ p.name }}">
                 <div class="carousel-caption">
                   <h4>{{ p.name }}</h4>
                   {% comment %}}<p>{{ p.descr }}</p>{% endcomment %}
