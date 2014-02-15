@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'aist_app',
     'tinymce',
+    'captcha'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,6 +115,9 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = False
 TINYMCE_COMPRESSOR = False
+
+RECAPTCHA_PUBLIC_KEY = '6LePoe4SAAAAAIgPk25UVV-M0rFlxWc70Iephs57'
+RECAPTCHA_PRIVATE_KEY = '6LePoe4SAAAAAAiZvmo4uV6LkMTDgqhatmwza9n1'
 
 try:
     from settings_local import *

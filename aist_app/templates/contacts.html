@@ -5,6 +5,7 @@
 
 {% block extrahead %}
   <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+  <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 {% endblock %}
 
 
@@ -18,15 +19,45 @@
           <div class="clearfix">&nbsp;</div>
         </div>
       
+        {% if sending_question %}
+          {% if not question_send %}
+            <div class="alert alert-danger text-center blue_block">
+              <h4 style="margin: 8px 0">Ваш вопрос не был отправлен. Пожалуйста, исправьте ошибки ниже.</h4>
+            </div>
+          {% else %}
+            <div class="alert alert-success text-center blue_block">
+              <h4 style="margin: 8px 0">Ваш вопрос отправлен.</h4>
+            </div>
+          {% endif %}          
+        {% endif %}
+
         <div>
           <div class="lead text_block">
             {{ contacts|safe }}
           </div>
+        </div>
+        <div>
           <div>
             <div id="map" style="width: 80%; height: 400px; margin: 0 auto;"></div>
           </div>
         </div>
-
+        <div style="margin-top: 70px;">
+          <div class="alert alert-info text-center blue_block">
+            <h4 style="margin: 8px 0">Связаться со специалистом</h4>
+          </div>
+          <div style="margin: 10px auto; padding-left: 160px;">
+            <form method="POST" action='.' role="form" class="form-horizontal" style="width: 70%;" id="question_form">
+              {% include "question_form.html" with form=form %}
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary">Отправить вопрос</button>{% csrf_token %}
+                </div>
+              </div>
+            </form>
+            {{ you_are_ok }}
+          </div>
+        </div>
+       
       </div><!-- /.col-xs-9 -->
       
       {% comment %}
