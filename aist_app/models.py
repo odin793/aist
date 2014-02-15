@@ -135,3 +135,18 @@ class Contacts(models.Model):
     
     def __unicode__(self):
         return u'Контакты'
+
+
+class Question(models.Model):
+    last_name = models.CharField(u'Имя', max_length=100)
+    first_name = models.CharField(u'Фамилия', max_length=100)
+    email = models.EmailField(u'E-mail', max_length=100)
+    subject = models.CharField(u'Тема', max_length=100, blank=True, null=True)
+    question = models.TextField(u'Вопрос')
+
+    class Meta:
+        verbose_name = u'Вопрос'
+        verbose_name_plural = u'вопросы'
+    
+    def __unicode__(self):
+        return u'%s %s - %s' % (self.last_name, self.first_name, self.subject)

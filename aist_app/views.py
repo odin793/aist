@@ -1,6 +1,9 @@
 from django.shortcuts import get_object_or_404
 from annoying.decorators import render_to
 from aist_app.models import *
+from aist_app.forms import QuestionForm
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
 # Create your views here.
 
 def paginate(cur_page, N):
@@ -51,8 +54,35 @@ def index_page(request):
 
 @render_to('contacts.html')
 def contacts(request):
+    if request.method == 'POST':
+        sending_question = True
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question_send = True
+            kwargs = {
+                'last_name': form.cleaned_data['last_name'],
+                'first_name': form.cleaned_data['first_name'],
+                'email': form.cleaned_data['email'],
+                'subject': form.cleaned_data['subject'],
+                'question': form.cleaned_data['question'],
+            }
+            q = Question(**kwargs)
+            q.save()
+            form = QuestionForm()
+        else:
+            question_send = False
+    else:
+        contacts = Contacts.objects.all()[0].contacts
+        form = QuestionForm()
+        sending_question = False
+        question_send = False
     contacts = Contacts.objects.all()[0].contacts
-    return {'contacts': contacts,}
+    return {
+        'contacts': contacts,
+        'form': form,
+        'question_send': question_send,
+        'sending_question': sending_question,
+    }
 
 
 @render_to('about.html')

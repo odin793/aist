@@ -41,6 +41,10 @@ class ContactsAdmin(admin.ModelAdmin):
     pass
 
 
+
+class QuestionAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(New, NewAdmin)
 admin.site.register(CompanyText, CompanyTextAdmin)
@@ -49,3 +53,4 @@ admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(IndexPicture, IndexPictureAdmin)
 admin.site.register(Contacts, ContactsAdmin)
 admin.site.register(Manufacturer, ManufacturerAdmin)
+admin.site.register(Question, QuestionAdmin)
